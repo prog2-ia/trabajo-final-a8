@@ -2,5 +2,5 @@ from abc import ABC, abstractmethod
 
 class Dish(ABC):
     """
-    Clase abstracta
+    Clase abstracta de la que heredan los tipos de platos
     """
