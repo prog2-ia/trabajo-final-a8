@@ -32,32 +32,24 @@ class Ingredient(ABC):
     @property
     def origen(self):
         return self.__origen
-        
+    
+    @origen.setter
+    def origen(self, value):
+        if value not in ("ANIMAL", "VEGETAL", "MINERAL"):
+            raise ValueError("Origen disponibles: 'ANIMAL', 'VEGETAL', 'MINERAL'")
+        else:
+            self.__origen = value
+
     @property
     def fecha_caducidad(self):
         return self.__fecha_caducidad
-
-    @property
-    def marco_nutrientes(self):
-        return self.__macro_nutrientes
     
-    @marco_nutrientes.setter
-    def macro_nutrientes(self, nutrientes: list):
-        if not nutrientes.strip():
-            raise ValueError("La lista de nutrientes no puede estar vacía")
+    @fecha_caducidad.setter
+    def fecha_caducidad(self, fecha):
+        if not isinstance(fecha, str):
+            raise ValueError("Escriba la fecha con el siguiente formato: 'dd del mm del yyyy'")
         else:
-            self.macro_nutrientes.append(nutrientes)
-
-    @property
-    def alergenos(self):
-        return self.__alergenos
-    
-    @alergenos.setter
-    def alergenos(self, lista_alergenos: list):
-        if not lista_alergenos.strip():
-            raise ValueError("La lista de alérgenos no puede estar vacía")
-        else:
-            self.__alergenos.append(lista_alergenos)
+            self.__fecha_caducidad = fecha
 
     def __str__(self):
         return f"Información de ingrediente: id={self.id}, origen={self.origen},
