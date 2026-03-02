@@ -18,12 +18,10 @@ class Ingredient(ABC):
     str -> Muestra la información detalla del alimento
 
     """
-    def __init__(self, id: int, origen: str, fecha_caducidad: str, macro_nutrientes: list, alergenos: list):
+    def __init__(self, id: int, origen: str, fecha_caducidad: str):
         self.__id = id
         self.__origen = origen
         self.__fecha_caducidad = fecha_caducidad
-        self.__macro_nutrientes = macro_nutrientes
-        self.__alergenos = alergenos
 
     @property
     def id(self):

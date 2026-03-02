@@ -6,6 +6,7 @@ class AnimalIngredient(Ingredient):
     """
     def __init__(self, id: int, origen: str, fecha_caducidad: str, crianza: str, macro_nutrientes: list, alergenos: list):
         super().__init__(id, origen, fecha_caducidad)
+        self.origen = "ANIMAL"
         self.crianza = crianza
         self.macro_nutrientes = macro_nutrientes
         self.alergenos = alergenos
