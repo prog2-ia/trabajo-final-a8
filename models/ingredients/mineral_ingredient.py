@@ -8,3 +8,14 @@ class MineralIngredient(Ingredient):
         super().__init__(id, origen, fecha_caducidad, minerales)
         self.origen = "MINERAL"
         self.__minerales = minerales
+
+    @property
+    def minerales(self):
+        return self.__minerales
+    
+    @minerales.setter
+    def minerales(self, lista_minerales: list):
+        if not lista_minerales.strip():
+            raise ValueError("Error")
+        else:
+            self.__minerales += lista_minerales
