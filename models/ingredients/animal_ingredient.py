@@ -31,7 +31,7 @@ class AnimalIngredient(Ingredient):
         if not nutrientes.strip():
             raise ValueError("La lista de nutrientes no puede estar vacía")
         else:
-            self.macro_nutrientes.append(nutrientes)
+            self.macro_nutrientes += nutrientes
 
     @property
     def alergenos(self):
@@ -42,7 +42,7 @@ class AnimalIngredient(Ingredient):
         if not lista_alergenos.strip():
             raise ValueError("La lista de alérgenos no puede estar vacía")
         else:
-            self.__alergenos.append(lista_alergenos)
+            self.__alergenos += lista_alergenos
 
     def __str__(self):
         return super().__str__()
