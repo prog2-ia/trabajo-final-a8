@@ -20,11 +20,10 @@ class MeatDish(Dish):
     
     def add_ingredient(self, ingredient: Ingredient):
         if ingredient.type != "ANIMAL":
-            logging.info("Los ingredientes tienen que ser de origen animal")
-            return False
-        else:
-            self.ingredients.append(ingredient)
-            return True
+            raise ValueError("Solo se pueden añadir ingredientes de origen animal")
+        super().add_ingredient(ingredient)
+
+
         
     
 
