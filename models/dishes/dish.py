@@ -49,7 +49,7 @@ class Dish(ABC):
     @dish_type.setter
     def dish_type(self, value):
         if value not in ("CARNE", "VEGANO", "MIXTO"):
-            raise ValueError("Tipos de platos: 'CARNE', 'VEGANO', 'MIXTO")
+            raise ValueError("Tipos de platos: 'CARNE', 'VEGANO', 'MIXTO'")
         else:
             self.__dish_type = value
 
@@ -73,12 +73,13 @@ class Dish(ABC):
         
         for i in self.ingredients:
             if ingredient.name == i.name:
-                self.ingredients.remove(ingredient)
+                self.ingredients.remove(i)
                 return True
         else:
             return False
         
     def total_calories(self):
+        total = 0
         for ingredient in self.ingredients:
             total += ingredient.total_calories()
         return total
@@ -93,10 +94,9 @@ class Dish(ABC):
         if not isinstance(allergen, str):
             raise ValueError()
 
-        for i in range(len(self.ingredients)):
-            for ingredient in self.ingredients:
-                if ingredient.allergens[i] == allergen:
-                    return True
+        for ingredient in self.ingredients:
+            if ingredient.is_allergen(allergen):
+                return True
         return False      
     
     def list_ingredients(self):
@@ -104,17 +104,25 @@ class Dish(ABC):
     
     @abstractmethod
     def is_vegan(self):
+        """
         for ingredient in self.ingredients:
             if ingredient.type != ('PLANTA', 'MINERAL'):
                 return False
         return True
-    
+            
+        """
+        pass
+
+
     @abstractmethod
     def is_meat(self):
+        """
         for ingredient in self.ingredients:
             if ingredient.type != 'ANIMAL':
                 return False
         return True
+        """
+        pass
     
     def __str__(self):
         return f"Información del plato: \nNombre='{self.name}'\nTipo='{self.dish_type}' \n\
