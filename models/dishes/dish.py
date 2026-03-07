@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod 
 from ingredients import Ingredient
+import logging
+
 
 class Dish(ABC):
     """
@@ -61,10 +63,11 @@ class Dish(ABC):
         
         for i in self.ingredients:
             if i.name == ingredient.name:
-                raise ValueError("El alimento ya existe en el plato")
-        
+                logging.info("El alimento ya existe en el plato")
+                return False
         else:
             self.ingredients.append(ingredient)
+            return True
 
 
     def remove_ingredient(self, ingredient: Ingredient):
