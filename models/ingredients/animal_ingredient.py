@@ -4,46 +4,24 @@ class AnimalIngredient(Ingredient):
     """
     Clase que define la información de alimentos de origen animal
     """
-    def __init__(self, id: int, origen: str, fecha_caducidad: str, crianza: str, macro_nutrientes: list, alergenos: list):
-        super().__init__(id, origen, fecha_caducidad)
-        self.origen = "ANIMAL"
-        self.crianza = crianza
-        self.macro_nutrientes = macro_nutrientes
-        self.alergenos = alergenos
+    def __init__(self, name, quantity, calories_per_100g, type, allergens, animal_source: str)
+        super().__init__(name, quantity, calories_per_100g, type, allergens):
+        self.animal_source = animal_source
 
     @property
-    def crianza(self):
-        return self.__crianza
+    def animal_source(self):
+        return self.__animal_source
     
-    @crianza.setter
-    def crianza(self, metodo):
-        if metodo not in ("ECOLÓGICO", "INTENSIVO"):
-            raise ValueError("Métodos disponibles: 'ECOLÓGICO', 'INTENSIVO")
+    @animal_source.setter
+    def animal_source(self, value):
+        if not isinstance(value, str):
+            raise ValueError("Introduzca el animal con letras porfavor")
         else:
-            self.__crianza = metodo
+            self.__animal_source = value
 
-    @property
-    def macro_nutrientes(self):
-        return self.__macro_nutrientes
-    
-    @macro_nutrientes.setter
-    def macro_nutrientes(self, nutrientes: list):
-        if not nutrientes.strip():
-            raise ValueError("La lista de nutrientes no puede estar vacía")
-        else:
-            self.macro_nutrientes += nutrientes
-
-    @property
-    def alergenos(self):
-        return self.__alergenos
-    
-    @alergenos.setter
-    def alergenos(self, lista_alergenos: list):
-        if not lista_alergenos.strip():
-            raise ValueError("La lista de alérgenos no puede estar vacía")
-        else:
-            self.__alergenos += lista_alergenos
+    def is_meat(self, type):
+        if type == "meat":
+            return True            
 
     def __str__(self):
-        return super().__str__()
-            
+        super().__str__()

@@ -76,6 +76,9 @@ class Ingredient(ABC):
             if not isinstance(allergen, str):
                 raise ValueError("No introduzca números porfavor")
             
+        if not value.strip():
+            raise ValueError("La lista no puede estar vacía")
+
         else:
             self.__allergens += value
 
