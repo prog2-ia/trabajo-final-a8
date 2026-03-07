@@ -92,7 +92,7 @@ class Dish(ABC):
 
     def contains_allergen(self, allergen: str):
         if not isinstance(allergen, str):
-            raise ValueError()
+            raise ValueError("El alérgeno debe ser un string")
 
         for ingredient in self.ingredients:
             if ingredient.is_allergen(allergen):
