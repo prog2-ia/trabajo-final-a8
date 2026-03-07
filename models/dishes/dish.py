@@ -56,5 +56,66 @@ class Dish(ABC):
     # Métodos
 
     def add_ingredient(self, ingredient: Ingredient):
-        pass
+        if not isinstance(ingredient, Ingredient):
+            raise ValueError("Usa objetos ingrediente")
         
+        for i in self.ingredients:
+            if i.name == ingredient.name:
+                raise ValueError("El alimento ya existe en el plato")
+        
+        else:
+            self.ingredients.append(ingredient)
+
+
+    def remove_ingredient(self, ingredient: Ingredient):
+        if not isinstance(ingredient, Ingredient):
+            raise ValueError("Usa objetos ingrediente")
+        
+        for i in self.ingredients:
+            if ingredient.name == i.name:
+                self.ingredients.remove(ingredient)
+                return True
+        else:
+            return False
+        
+    def total_calories(self):
+        for ingredient in self.ingredients:
+            total += ingredient.total_calories()
+        return total
+
+    def calories_per_ingredient(self):
+        calories = []
+        for ingredient in self.ingredients:
+            calories.append([ingredient.name, ingredient.total_calories()])
+        return calories
+
+    def contains_allergen(self, allergen: str):
+        if not isinstance(allergen, str):
+            raise ValueError()
+
+        for i in range(len(self.ingredients)):
+            for ingredient in self.ingredients:
+                if ingredient.allergens[i] == allergen:
+                    return True
+        return False      
+    
+    def list_ingredients(self):
+        return [ingredient.name for ingredient in self.ingredients]
+    
+    @abstractmethod
+    def is_vegan(self):
+        for ingredient in self.ingredients:
+            if ingredient.type != ('PLANTA', 'MINERAL'):
+                return False
+        return True
+    
+    @abstractmethod
+    def is_meat(self):
+        for ingredient in self.ingredients:
+            if ingredient.type != 'ANIMAL':
+                return False
+        return True
+    
+    def __str__(self):
+        return f"Información del plato: \nNombre='{self.name}'\nTipo='{self.dish_type}' \n\
+                Ingredientes: {self.list_ingredients()} \nCalorías totales={self.total_calories()}"
