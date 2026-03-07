@@ -1,7 +1,5 @@
-from abc import ABC, abstractmethod 
+from abc import ABC, abstractmethod
 from ingredients import Ingredient
-import logging
-
 
 class Dish(ABC):
     """
@@ -25,11 +23,9 @@ class Dish(ABC):
     def ingredients(self, value):
         if not isinstance(value, list):
             raise ValueError("Incluye los ingredientes usando una lista")
-        
         for ingredient in value:
             if not isinstance(ingredient, Ingredient):
-                raise ValueError("Utiliza objetos ingrediete")
-            
+                raise ValueError("Utiliza objetos ingrediente")
         else:
             self.__ingredients = value
 
@@ -60,26 +56,20 @@ class Dish(ABC):
     def add_ingredient(self, ingredient: Ingredient):
         if not isinstance(ingredient, Ingredient):
             raise ValueError("Usa objetos ingrediente")
-        
         for i in self.ingredients:
             if i.name == ingredient.name:
-                logging.info("El alimento ya existe en el plato")
-                return False
+                raise ValueError("El alimento ya existe en el plato")
         else:
             self.ingredients.append(ingredient)
-            return True
-
 
     def remove_ingredient(self, ingredient: Ingredient):
         if not isinstance(ingredient, Ingredient):
             raise ValueError("Usa objetos ingrediente")
-        
         for i in self.ingredients:
-            if ingredient.name == i.name:
+            if i.name == ingredient.name:
                 self.ingredients.remove(i)
                 return True
-        else:
-            return False
+        return False
         
     def total_calories(self):
         total = 0
@@ -96,7 +86,6 @@ class Dish(ABC):
     def contains_allergen(self, allergen: str):
         if not isinstance(allergen, str):
             raise ValueError("El alérgeno debe ser un string")
-
         for ingredient in self.ingredients:
             if ingredient.is_allergen(allergen):
                 return True
@@ -108,25 +97,20 @@ class Dish(ABC):
     @abstractmethod
     def is_vegan(self):
         """
-        for ingredient in self.ingredients:
-            if ingredient.type != ('PLANTA', 'MINERAL'):
-                return False
-        return True
-            
+        Este método se implementa en subclases
         """
         pass
-
 
     @abstractmethod
     def is_meat(self):
         """
-        for ingredient in self.ingredients:
-            if ingredient.type != 'ANIMAL':
-                return False
-        return True
+        Este método se implementa en subclases
         """
         pass
     
     def __str__(self):
-        return f"Información del plato: \nNombre='{self.name}'\nTipo='{self.dish_type}' \n\
-                Ingredientes: {self.list_ingredients()} \nCalorías totales={self.total_calories()}"
+        return (f"Información del plato: \n"
+                f"Nombre='{self.name}'\n"
+                f"Tipo='{self.dish_type}' \n"
+                f"Ingredientes: {self.list_ingredients()} \n"
+                f"Calorías totales={self.total_calories()}")
