@@ -6,14 +6,14 @@ class Dish(ABC):
     Clase abstracta de la que heredan los tipos de platos
     """
     def __init__(self, name: str, ingredients: list[Ingredient], servings, dish_type):
-        self.__name = name
+        self._name = name
         self.ingredients = ingredients
         self.servings = servings
         self.dish_type = dish_type
 
     @property
     def name(self):
-        return self.__name
+        return self._name
     
     @property
     def ingredients(self):

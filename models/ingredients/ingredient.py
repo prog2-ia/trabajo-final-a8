@@ -20,7 +20,7 @@ class Ingredient(ABC):
     """
 
     def __init__(self, name: str, quantity: float, calories_per_100g: float, type: str, allergens: list[str]):
-        self.__name = name
+        self._name = name
         self.quantity = quantity
         self.calories_per_100g = calories_per_100g
         self.type = type
@@ -28,7 +28,7 @@ class Ingredient(ABC):
 
     @property
     def name(self):
-        return self.__name
+        return self._name
     
     @property
     def quantity(self):

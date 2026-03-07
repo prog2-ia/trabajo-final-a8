@@ -4,7 +4,7 @@ sobre ingredientes y las de los platos
 """
 from ingredients import AnimalIngredient, MineralIngredient, PlantIngredient
 from dishes import MeatDish, MixedDish, VeganDish
-
+6
 def main():
     ingredientes = []
     platos = []
