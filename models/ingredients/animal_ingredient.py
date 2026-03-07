@@ -4,7 +4,7 @@ class AnimalIngredient(Ingredient):
     """
     Clase que define la información de alimentos de origen animal
     """
-    def __init__(self, name, quantity, calories_per_100g, type, allergens, animal_source: str):
+    def __init__(self, name, quantity, calories_per_100g, allergens, animal_source: str):
         super().__init__(name, quantity, calories_per_100g, "ANIMAL", allergens)
         self.animal_source = animal_source
 

@@ -9,7 +9,7 @@ class MineralIngredient(Ingredient):
         -name: Nombre
         - quantity: ...
     """
-    def __init__(self, name, quantity, calories_per_100g, type, allergens, mineral_type: str):
+    def __init__(self, name, quantity, calories_per_100g, allergens, mineral_type: str):
         super().__init__(name, quantity, calories_per_100g, "MINERAL", allergens)
         self.mineral_type = mineral_type
 

@@ -5,7 +5,7 @@ class PlantIngredient(Ingredient):
     Clase que define los alimentos de tipo planta
     """
 
-    def __init__(self, name, quantity, calories_per_100g, type, allergens, is_fruit: bool):
+    def __init__(self, name, quantity, calories_per_100g, allergens, is_fruit: bool):
         super().__init__(name, quantity, calories_per_100g, "PLANTA", allergens)
         self.is_fruit = is_fruit
 
