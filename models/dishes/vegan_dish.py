@@ -11,7 +11,7 @@ class VeganDish(Dish):
 
     def is_vegan(self):
         for ingredient in self.ingredients:
-            if ingredient.type != ("PLANTA", "MINERAL"):
+            if ingredient.type not in ("PLANTA", "MINERAL"):
                 return False
         return True
 
