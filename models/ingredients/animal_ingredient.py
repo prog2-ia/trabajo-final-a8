@@ -5,7 +5,7 @@ class AnimalIngredient(Ingredient):
     Clase que define la información de alimentos de origen animal
     """
     def __init__(self, name, quantity, calories_per_100g, type, allergens, animal_source: str):
-        super().__init__(name, quantity, calories_per_100g, type, allergens)
+        super().__init__(name, quantity, calories_per_100g, "ANIMAL", allergens)
         self.animal_source = animal_source
 
     @property
@@ -19,9 +19,9 @@ class AnimalIngredient(Ingredient):
         else:
             self.__animal_source = value
 
-    def is_meat(self, type):
-        if type == "meat":
-            return True            
+    def is_meat(self):
+        if self.animal_source in ['Cerdo', 'Vaca', 'Pollo']:
+            return True
+        else:
+            return False        
 
-    def __str__(self):
-        super().__str__()

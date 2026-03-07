@@ -1,12 +1,12 @@
 from ingredient import Ingredient
 
-class PlanIngredient(Ingredient):
+class PlantIngredient(Ingredient):
     """
     Clase que define los alimentos de tipo planta
     """
 
     def __init__(self, name, quantity, calories_per_100g, type, allergens, is_fruit: bool):
-        super().__init__(name, quantity, calories_per_100g, type, allergens)
+        super().__init__(name, quantity, calories_per_100g, "PLANTA", allergens)
         self.is_fruit = is_fruit
 
     @property
@@ -19,12 +19,3 @@ class PlanIngredient(Ingredient):
             raise ValueError("Indica si es fruta usando True o False")
         else:
             self.__is_fruit = value
-
-    def total_calories(self):
-        super().total_calories()
-
-    def is_allergen(self, value):
-        super().is_allergen(value)
-
-    def __str__(self):
-        super().__str__()

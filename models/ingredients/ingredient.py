@@ -46,7 +46,7 @@ class Ingredient(ABC):
         return self.__calories_per_100g
     
     @calories_per_100g.setter
-    def calores_per_100g(self, value):
+    def calories_per_100g(self, value):
         if value <= 0:
             raise ValueError("EL número de calorías ha de ser mayor que 0")
         else:
@@ -75,25 +75,18 @@ class Ingredient(ABC):
         for allergen in value:
             if not isinstance(allergen, str):
                 raise ValueError("No introduzca números porfavor")
-            
-        if not value.strip():
-            raise ValueError("La lista no puede estar vacía")
-
         else:
-            self.__allergens += value
+            self.__allergens = value
 
     
     def total_calories(self):
-        return self.calories_per_100g * self.quantity
+        return (self.calories_per_100g * self.quantity) /100
     
     def is_allergen(self, allergen: str):
         if not isinstance(allergen, str):
             raise ValueError("Introduzca el alérgeno con letras porfavor")
         else:
-            for a in self.allergens:
-                if allergen == a:
-                    return True
-        return False 
+            return allergen in self.allergens
     
     def __str__(self):
         return f"Información alimento: Ingredient[name='{self.name}', \
