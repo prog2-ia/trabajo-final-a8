@@ -11,15 +11,15 @@ class MixedDish(Dish):
 
     def is_vegan(self):
         for ingredient in self.ingredients:
-            if ingredient.type not in ("PLANTA", "MINERAL"):
-                return False
-        return True
+            if ingredient.type in ("PLANTA", "MINERAL"):
+                return True
+        return False
     
     def is_meat(self):
         for ingredient in self.ingredients:
-            if ingredient.type != "ANIMAL":
-                return False
-        return True
+            if ingredient.type == "ANIMAL":
+                return True
+        return False
     
     def add_ingredient(self, ingredient: Ingredient):
         try:
