@@ -1,4 +1,4 @@
-from ingredient import Ingredient
+from .ingredient import Ingredient
 
 class AnimalIngredient(Ingredient):
     """
