@@ -89,8 +89,8 @@ class Ingredient(ABC):
             return allergen in self.allergens
     
     def __str__(self):
-        return f"Información alimento: Ingredient[name='{self.name}', \
-                quantity={self.quantity}, calories_per_100g={self.calories_per_100g}, \
+        return f"Información alimento: Ingredient[name='{self.name}',\
+                quantity={self.quantity}, calories_per_100g={self.calories_per_100g},\
                 allergens={self.allergens}]"
 
 
