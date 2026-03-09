@@ -7,7 +7,7 @@ class MeatDish(Dish):
     Clase que define los meatdish
     """
     def __init__(self, name, ingredients, servings):
-        super().__init(name, ingredients, servings, "CARNE")
+        super().__init__(name, ingredients, servings, "CARNE")
 
     def is_vegan(self):
         return False
