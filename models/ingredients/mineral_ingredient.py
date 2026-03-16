@@ -2,12 +2,17 @@ from .ingredient import Ingredient
 
 class MineralIngredient(Ingredient):
     """
-    Clase que define los ingredientes de origen Mineral
+    Clase que representa un ingrediente de origen mineral.
 
-    Atributos
-    ---------
-        -name: Nombre
-        - quantity: ...
+    Hereda de la clase Ingredient y añade información específica
+    sobre el tipo de mineral del que procede el ingrediente
+    (por ejemplo: sal, agua, etc.).
+
+    Attributes
+    ----------
+    __mineral_type : str
+        Tipo de mineral al que pertenece el ingrediente
+        
     """
     def __init__(self, name, quantity, calories_per_100g, allergens, mineral_type: str):
         super().__init__(name, quantity, calories_per_100g, "MINERAL", allergens)

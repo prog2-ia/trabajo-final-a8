@@ -2,7 +2,16 @@ from .ingredient import Ingredient
 
 class PlantIngredient(Ingredient):
     """
-    Clase que define los alimentos de tipo planta
+    Clase que representa un ingrediente de origen vegetal.
+
+    Hereda de la clase Ingredient y añade información específica
+    sobre si el ingrediente es una fruta o no.
+
+    Attributes
+    ----------
+    __is_fruit : bool
+        Indica si el ingrediente es una fruta (True) o no (False)
+        
     """
 
     def __init__(self, name, quantity, calories_per_100g, allergens, is_fruit: bool):

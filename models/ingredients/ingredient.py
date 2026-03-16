@@ -2,21 +2,23 @@ from abc import ABC, abstractmethod
 
 class Ingredient(ABC):
     """
-    Clase abstracta que define que propiedades van a tener los ingredientes
+    Clase abstracta que representa un ingrediente.
 
-    Atributos
-    ---------
-        name: 
-        quantity: 
-        calories_per_100g:
-        type:
-        allergens: 
+    Define las propiedades y comportamientos comunes que deben tener
+    todos los ingredientes utilizados en los platos.
 
-    Métodos
-    ---------
-        total_calories: devuelve el número de calorías según la cantidad
-        is_allergen: devuelve True si el alimento contiene el alérgeno indicado
-        str -> Muestra la información detalla del alimento
+    Attributes
+    ----------
+    _name : str
+        Nombre del ingrediente.
+    __quantity : float
+        Cantidad del ingrediente en gramos.
+    __calories_per_100g : float
+        Número de calorías por cada 100 gramos.
+    __type : str
+        Tipo de ingrediente ("ANIMAL", "PLANTA" o "MINERAL").
+    __allergens : list[str]
+        Lista de alérgenos que contiene el ingrediente.
     """
 
     def __init__(self, name: str, quantity: float, calories_per_100g: float, type: str, allergens: list[str]):
