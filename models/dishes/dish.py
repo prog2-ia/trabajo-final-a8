@@ -3,8 +3,24 @@ from ingredients import Ingredient
 
 class Dish(ABC):
     """
-    Clase abstracta de la que heredan los tipos de platos
+    Clase abstracta que representa un plato.
+
+    Esta clase define la estructura común que tendrán todos los tipos de platos
+    del sistema. No debe instanciarse directamente, sino que debe heredarse
+    para crear tipos concretos de platos (por ejemplo, platos veganos o de carne).
+
+    Attributes
+    ----------
+    _name : str
+        Nombre del plato.
+    __ingredients : list[Ingredient]
+        Lista de ingredientes que componen el plato.
+    __servings : int
+        Número de raciones del plato.
+    __dish_type : str
+        Tipo de plato. Puede ser "CARNE", "VEGANO" o "MIXTO".
     """
+
     def __init__(self, name: str, ingredients: list[Ingredient], servings, dish_type):
         self._name = name
         self.ingredients = ingredients

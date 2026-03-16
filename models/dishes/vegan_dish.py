@@ -3,7 +3,12 @@ from ingredients import Ingredient
 
 class VeganDish(Dish):
     """
-    Clase que define los platos veganos
+    Clase que representa un plato vegano.
+
+    Un plato vegano solo puede contener ingredientes de origen vegetal
+    o mineral. Esta clase hereda de Dish y restringe los ingredientes
+    permitidos para garantizar que el plato sea vegano
+    
     """
 
     def __init__(self, name, ingredients, servings):

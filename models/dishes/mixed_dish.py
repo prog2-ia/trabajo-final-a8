@@ -3,7 +3,12 @@ from ingredients import Ingredient
 
 class MixedDish(Dish):
     """
-    Clase que define los platos combinados
+    Clase que representa un plato mixto.
+
+    Un plato mixto puede contener ingredientes de distintos tipos
+    (animal, vegetal o mineral). Esta clase hereda de Dish y define
+    el comportamiento específico de este tipo de platos
+    
     """
 
     def __init__(self, name, ingredients, servings):

@@ -4,7 +4,11 @@ import logging
 
 class MeatDish(Dish):
     """
-    Clase que define los meatdish
+    Clase que representa un plato de carne.
+
+    Hereda de la clase abstracta Dish y define el comportamiento
+    específico para platos cuyos ingredientes deben ser de origen animal
+    
     """
     def __init__(self, name, ingredients, servings):
         super().__init__(name, ingredients, servings, "CARNE")
