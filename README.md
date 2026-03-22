@@ -2,25 +2,66 @@
 
 # Recetario
 [//]: # (Incluid aquí la descripción de vuestra aplicación. Por cierto, así se ponen comentarios en Markdown)
-Esta aplicación crea recetas personalizadas hasta menus tanto diarios como semanales.
+La aplicación permite gestionar un recetario de platos e ingredientes. Permite crear ingredientes de distintos tipos (animal, vegetal, mineral), combinarlos en platos (veganos o con carne) y organizar el recetario de forma modular. Próximamente contará con una API REST para interactuar con los datos de manera externa.
 
 ## Autores
 
-* (Coordinador) [Alfonso Íñiguez Cortés] (https://github.com/Alfonso647)
-* [Miguel Perez Alonso] https://github.com/mpa113
+* (Coordinador) [Alfonso Íñiguez Cortés](https://github.com/Alfonso647)
+* [Miguel Perez Alonso](https://github.com/mpa113)
 
 ## Profesor
-[//]: [Cristina Cachero](https://github.com/ccacheroc)
+[//]: # (Indicar el profesor de la asignatura)
+Cristina Cachero
 
 ## Requisitos
 [//]: # (Indicad aquí los requisitos de vuestra aplicación, así como el alumno responsable de cada uno de ellos)
-* ... (Alumno x)
+* Python 3.10 o superior (Alumno x)
+* pip para instalar dependencias (Alumno x)
+* Entorno virtual recomendado (Alumno x)
 
 ## Instrucciones de instalación y ejecución
-[//]: # Para ejecutar nuestra apliación hay que instalar las dependencias desde el requiriments.txt. Seguidamente ejecuta el main para probar la aplicación ... (Indicad aquí qué habría que hacer para ejecutar vuestra aplicación)
+[//]: # Para ejecutar nuestra aplicación hay que instalar las dependencias desde el requirements.txt. Seguidamente ejecuta el main para probar la aplicación.
 
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/Alfonso647/trabajo-final-a8.git
+cd trabajo-final-a8
+```
+
+2. Crear un entorno virtual (opcional, pero recomendado):
+```bash
+python -m venv venv
+# Activar en Windows
+venv\Scripts\activate
+# Activar en Linux/macOS
+# source venv/bin/activate
+```
+
+3. Instalar dependencias:
+```bash
+pip install -r requirements.txt
+```
+
+4. Ejecutar la aplicación:
+```bash
+python main.py
+```
 
 ## Resumen de la API
-[//]: # (Cuando tengáis la API, añadiréis aquí la descripción de las diferentes llamadas.)
+[//]: # La API REST estará disponible próximamente y permitirá:
 
-[//]: # (Para la evaluación por pares, indicaréis aquí las diferentes opciones de vuestro menú textual, especificando para qué sirve cada una de ellas)
+Crear, listar, actualizar y eliminar ingredientes
+Crear, listar y modificar platos
+Asociar ingredientes a platos
+Consultar recetas y detalles de los ingredientes
+
+## Menú de aplicación
+
+[//]: # Para la evaluación por pares, indicaréis aquí las diferentes opciones de vuestro menú textual, especificando para qué sirve cada una de ellas.
+
+La aplicación contará con un menú interactivo que permitirá:
+
+Añadir ingredientes de distintos tipos (Animal, Vegetal, Mineral)
+Crear platos veganos o con carne
+Listar todos los platos y todos los ingredientes
+Consultar información detallada de cada receta
