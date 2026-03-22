@@ -20,7 +20,8 @@ Cristina Cachero
 * Entorno virtual recomendado (Alumno x)
 
 ## Instrucciones de instalación y ejecución
-[//]: # Para ejecutar nuestra aplicación hay que instalar las dependencias desde el requirements.txt. Seguidamente ejecuta el main para probar la aplicación.
+[//]: # (instrucciones de ejecución)
+Para ejecutar nuestra aplicación hay que instalar las dependencias desde el requirements.txt. Seguidamente ejecuta el main para probar la aplicación.
 
 1. Clonar el repositorio:
 ```bash
@@ -48,20 +49,22 @@ python main.py
 ```
 
 ## Resumen de la API
-[//]: # La API REST estará disponible próximamente y permitirá:
+[//]: # (documentación acerca de la API)
+La API REST estará disponible próximamente y permitirá:
 
-Crear, listar, actualizar y eliminar ingredientes
-Crear, listar y modificar platos
-Asociar ingredientes a platos
-Consultar recetas y detalles de los ingredientes
+* Crear, listar, actualizar y eliminar ingredientes
+* Crear, listar y modificar platos
+* Asociar ingredientes a platos
+* Consultar recetas y detalles de los ingredientes
 
 ## Menú de aplicación
 
-[//]: # Para la evaluación por pares, indicaréis aquí las diferentes opciones de vuestro menú textual, especificando para qué sirve cada una de ellas.
+[//]: # (documentación acerca del menú)
+Para la evaluación por pares, indicaréis aquí las diferentes opciones de vuestro menú textual, especificando para qué sirve cada una de ellas.
 
 La aplicación contará con un menú interactivo que permitirá:
 
-Añadir ingredientes de distintos tipos (Animal, Vegetal, Mineral)
-Crear platos veganos o con carne
-Listar todos los platos y todos los ingredientes
-Consultar información detallada de cada receta
+* Añadir ingredientes de distintos tipos (Animal, Vegetal, Mineral)
+* Crear platos veganos o con carne
+* Listar todos los platos y todos los ingredientes
+* Consultar información detallada de cada receta
