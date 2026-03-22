@@ -1,6 +1,7 @@
 from .dish import Dish
 from ..ingredients import Ingredient
 import logging
+from exceptions.custom_exceptions import IncompatibleIngredientError
 
 class MeatDish(Dish):
     """
@@ -24,7 +25,7 @@ class MeatDish(Dish):
     
     def add_ingredient(self, ingredient: Ingredient):
         if ingredient.type != "ANIMAL":
-            raise ValueError("Solo se pueden añadir ingredientes de origen animal")
+            raise IncompatibleIngredientError("Solo se pueden añadir ingredientes de origen animal")
         super().add_ingredient(ingredient)
 
 

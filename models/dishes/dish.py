@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from ..ingredients import Ingredient
+from exceptions.custom_exceptions import InvalidServingError
 
 class Dish(ABC):
     """
@@ -52,7 +53,7 @@ class Dish(ABC):
     @servings.setter
     def servings(self, value):
         if value <= 0:
-            raise ValueError("El número de raciones ha de ser mayor que 0")
+            raise InvalidServingError("El número de raciones ha de ser mayor que 0")
         else:
             self.__servings = value
 

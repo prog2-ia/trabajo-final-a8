@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod 
+from exceptions.custom_exceptions import InvalidUnitError
+
 
 class Ingredient(ABC):
     """
@@ -39,7 +41,7 @@ class Ingredient(ABC):
     @quantity.setter
     def quantity(self, value):
         if value <= 0:
-            raise ValueError("Cantidad ha de ser mayor a 1 gramo")
+            raise InvalidUnitError("Cantidad ha de ser mayor a 1 gramo")
         else:
             self.__quantity = value
         
@@ -80,7 +82,6 @@ class Ingredient(ABC):
         else:
             self.__allergens = value
 
-    
     def total_calories(self):
         return (self.calories_per_100g * self.quantity) /100
     
@@ -94,11 +95,3 @@ class Ingredient(ABC):
         return f"Información alimento: Ingredient[name='{self.name}',\
                 quantity={self.quantity}, calories_per_100g={self.calories_per_100g},\
                 allergens={self.allergens}]"
-
-
-
-
-
-    
-
-

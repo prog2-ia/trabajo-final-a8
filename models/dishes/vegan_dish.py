@@ -1,5 +1,6 @@
 from .dish import Dish
 from ..ingredients import Ingredient
+from exceptions.custom_exceptions import IncompatibleIngredientError
 
 class VeganDish(Dish):
     """
@@ -25,7 +26,7 @@ class VeganDish(Dish):
 
     def add_ingredient(self, ingredient: Ingredient):
         if ingredient.type not in ("PLANTA", "MINERAL"):
-            raise ValueError("Solo se permiten alimentos de tipo planta o mineral")
+            raise IncompatibleIngredientError("Solo se permiten alimentos de tipo planta o mineral")
         else:
             super().add_ingredient(ingredient) 
 
