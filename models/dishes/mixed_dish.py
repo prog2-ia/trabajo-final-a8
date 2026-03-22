@@ -1,5 +1,5 @@
 from .dish import Dish
-from ingredients import Ingredient
+from ..ingredients import Ingredient
 
 class MixedDish(Dish):
     """

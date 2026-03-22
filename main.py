@@ -2,9 +2,10 @@
 Código para comprobar el funcionamiento de las clases 
 sobre ingredientes y las de los platos
 """
-from ingredients import AnimalIngredient, MineralIngredient, PlantIngredient
-from dishes import MeatDish, MixedDish, VeganDish
-6
+
+from models.dishes import MeatDish, MixedDish, VeganDish
+from models.ingredients import AnimalIngredient, MineralIngredient, PlantIngredient
+
 def main():
     ingredientes = []
     platos = []

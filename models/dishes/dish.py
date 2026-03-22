@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from ingredients import Ingredient
+from ..ingredients import Ingredient
 
 class Dish(ABC):
     """
