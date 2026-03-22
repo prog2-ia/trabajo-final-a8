@@ -15,9 +15,9 @@ Cristina Cachero
 
 ## Requisitos
 [//]: # (Indicad aquí los requisitos de vuestra aplicación, así como el alumno responsable de cada uno de ellos)
-* Python 3.10 o superior (Alumno x)
-* pip para instalar dependencias (Alumno x)
-* Entorno virtual recomendado (Alumno x)
+* Python 3.10 o superior 
+* pip para instalar dependencias 
+* Entorno virtual recomendado 
 
 ## Instrucciones de instalación y ejecución
 [//]: # (instrucciones de ejecución)
@@ -59,8 +59,7 @@ La API REST estará disponible próximamente y permitirá:
 
 ## Menú de aplicación
 
-[//]: # (documentación acerca del menú)
-Para la evaluación por pares, indicaréis aquí las diferentes opciones de vuestro menú textual, especificando para qué sirve cada una de ellas.
+[//]: # (para la evaluación por pares, indicaréis aquí las diferentes opciones de vuestro menú textual, especificando para qué sirve cada una de ellas)
 
 La aplicación contará con un menú interactivo que permitirá:
 
