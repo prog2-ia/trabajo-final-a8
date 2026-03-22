@@ -1,13 +1,13 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/09uckVan)
 
-# Recetario
+# Recetario y Gestor de Menús
 [//]: # (Incluid aquí la descripción de vuestra aplicación. Por cierto, así se ponen comentarios en Markdown)
-La aplicación permite gestionar un recetario de platos e ingredientes. Permite crear ingredientes de distintos tipos (animal, vegetal, mineral), combinarlos en platos (veganos o con carne) y organizar el recetario de forma modular. Próximamente contará con una API REST para interactuar con los datos de manera externa.
+La aplicación permite gestionar un recetario de platos e ingredientes. Permite crear ingredientes de distintos tipos (animal, vegetal, mineral), combinarlos en platos (veganos o con carne) y organizar el recetario de forma modular. Además, el sistema permite generar menús semanales, gestionar listas de la compra y exportar información en distintos formatos. Próximamente contará con una API REST para interactuar con los datos de manera externa.
 
 ## Autores
 
 * (Coordinador) [Alfonso Íñiguez Cortés](https://github.com/Alfonso647)
-* [Miguel Perez Alonso](https://github.com/mpa113)
+* [Miguel Pérez Alonso](https://github.com/mpa113)
 
 ## Profesor
 [//]: # (Indicar el profesor de la asignatura)
@@ -67,3 +67,7 @@ La aplicación contará con un menú interactivo que permitirá:
 * Crear platos veganos o con carne
 * Listar todos los platos y todos los ingredientes
 * Consultar información detallada de cada receta
+* Gestionar recetario
+* Generar menú semanal
+* Guardar y cargar menús
+* Exportar menú a formato PDF
