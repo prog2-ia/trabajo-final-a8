@@ -25,7 +25,7 @@ Para ejecutar nuestra aplicación hay que instalar las dependencias desde el req
 
 1. Clonar el repositorio:
 ```bash
-git clone https://github.com/Alfonso647/trabajo-final-a8.git
+git clone https://github.com/trabajo-final-a8.git
 cd trabajo-final-a8
 ```
 
