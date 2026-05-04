@@ -71,3 +71,13 @@ La aplicación contará con un menú interactivo que permitirá:
 * Generar menú semanal
 * Guardar y cargar menús
 * Exportar menú a formato PDF
+
+
+
+
+
+# Cosas que faltan
+-> Comentar el resto del código
+-> Sugerencia de tipos (def ...() -> None:)
+-> Checkear aspecto 5 tema ficheros
+-> Añadir ingredientes, platos predifidos
