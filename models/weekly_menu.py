@@ -27,5 +27,8 @@ class WeeklyMenu:
     def __lt__(self, other):
         return self.total_calories() < other.total_calories()
 
+    def __getitem__(self, day):
+        return self.menu[day]
+
     def __str__(self):
         return "\n".join([f"{day}: {dish.name}" for day, dish in self.menu.items()])
