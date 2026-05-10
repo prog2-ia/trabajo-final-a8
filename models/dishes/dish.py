@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from ..ingredients import Ingredient
 from exceptions.custom_exceptions import InvalidServingError
 
+
 class Dish(ABC):
     """
     Clase abstracta que representa un plato.
@@ -22,22 +23,22 @@ class Dish(ABC):
         Tipo de plato. Puede ser "CARNE", "VEGANO" o "MIXTO".
     """
 
-    def __init__(self, name: str, ingredients: list[Ingredient], servings, dish_type):
+    def __init__(self, name: str, ingredients: list[Ingredient], servings: int, dish_type: str) -> None:
         self._name = name
         self.ingredients = ingredients
         self.servings = servings
         self.dish_type = dish_type
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
     
     @property
-    def ingredients(self):
+    def ingredients(self) -> list[Ingredient]:
         return self.__ingredients
     
     @ingredients.setter
-    def ingredients(self, value):
+    def ingredients(self, value: list[Ingredient]) -> None:
         if not isinstance(value, list):
             raise ValueError("Incluye los ingredientes usando una lista")
         for ingredient in value:
@@ -47,22 +48,22 @@ class Dish(ABC):
             self.__ingredients = value
 
     @property
-    def servings(self):
+    def servings(self) -> int:
         return self.__servings
     
     @servings.setter
-    def servings(self, value):
+    def servings(self, value: int) -> None:
         if value <= 0:
             raise InvalidServingError("El número de raciones ha de ser mayor que 0")
         else:
             self.__servings = value
 
     @property
-    def dish_type(self):
+    def dish_type(self) -> str:
         return self.__dish_type
     
     @dish_type.setter
-    def dish_type(self, value):
+    def dish_type(self, value: str) -> None:
         if value not in ("CARNE", "VEGANO", "MIXTO"):
             raise ValueError("Tipos de platos: 'CARNE', 'VEGANO', 'MIXTO'")
         else:
@@ -70,7 +71,7 @@ class Dish(ABC):
 
     # Métodos
 
-    def add_ingredient(self, ingredient: Ingredient):
+    def add_ingredient(self, ingredient: Ingredient) -> None:
         if not isinstance(ingredient, Ingredient):
             raise ValueError("Usa objetos ingrediente")
         for i in self.ingredients:
@@ -79,7 +80,7 @@ class Dish(ABC):
         else:
             self.ingredients.append(ingredient)
 
-    def remove_ingredient(self, ingredient: Ingredient):
+    def remove_ingredient(self, ingredient: Ingredient) -> bool:
         if not isinstance(ingredient, Ingredient):
             raise ValueError("Usa objetos ingrediente")
         for i in self.ingredients:
@@ -88,19 +89,19 @@ class Dish(ABC):
                 return True
         return False
         
-    def total_calories(self):
+    def total_calories(self) -> float:
         total = 0
         for ingredient in self.ingredients:
             total += ingredient.total_calories()
         return total
 
-    def calories_per_ingredient(self):
+    def calories_per_ingredient(self) -> list[list]:
         calories = []
         for ingredient in self.ingredients:
             calories.append([ingredient.name, ingredient.total_calories()])
         return calories
 
-    def contains_allergen(self, allergen: str):
+    def contains_allergen(self, allergen: str) -> bool:
         if not isinstance(allergen, str):
             raise ValueError("El alérgeno debe ser un string")
         for ingredient in self.ingredients:
@@ -108,34 +109,34 @@ class Dish(ABC):
                 return True
         return False      
     
-    def list_ingredients(self):
+    def list_ingredients(self) -> list[str]:
         return [ingredient.name for ingredient in self.ingredients]
     
     @abstractmethod
-    def is_vegan(self):
+    def is_vegan(self) -> bool:
         """
         Este método se implementa en subclases
         """
         pass
 
     @abstractmethod
-    def is_meat(self):
+    def is_meat(self) -> bool:
         """
         Este método se implementa en subclases
         """
         pass
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
         if not isinstance(other, Dish):
             return False
         return self.name == other.name
 
-    def __str__(self):
+    def __str__(self) -> str:
         return (f"Información del plato: \n"
                 f"Nombre='{self.name}'\n"
                 f"Tipo='{self.dish_type}' \n"
                 f"Ingredientes: {self.list_ingredients()} \n"
                 f"Calorías totales={self.total_calories()}")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Dish({self.name}, {self.dish_type})"

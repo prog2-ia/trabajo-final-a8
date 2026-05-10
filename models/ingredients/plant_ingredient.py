@@ -14,16 +14,16 @@ class PlantIngredient(Ingredient):
         
     """
 
-    def __init__(self, name, quantity, calories_per_100g, allergens, is_fruit: bool):
+    def __init__(self, name: str, quantity: float, calories_per_100g: float, allergens: list[str], is_fruit: bool) -> None:
         super().__init__(name, quantity, calories_per_100g, "PLANTA", allergens)
         self.is_fruit = is_fruit
 
     @property
-    def is_fruit(self):
+    def is_fruit(self) -> bool:
         return self.__is_fruit
     
     @is_fruit.setter
-    def is_fruit(self, value):
+    def is_fruit(self, value: bool) -> None:
         if not isinstance(value, bool):
             raise ValueError("Indica si es fruta usando True o False")
         else:
