@@ -3,8 +3,8 @@ Código para comprobar el funcionamiento de las clases
 sobre ingredientes y las de los platos
 """
 
-from models.dishes import MeatDish, MixedDish, VeganDish
-from models.ingredients import AnimalIngredient, MineralIngredient, PlantIngredient
+from models.dishes import Dish, MeatDish, MixedDish, VeganDish
+from models.ingredients import Ingredient, AnimalIngredient, MineralIngredient, PlantIngredient
 from models.weekly_menu import WeeklyMenu
 from models.recipe_book import RecipeBook
 from services.menu_service import generate_weekly_menu
@@ -13,11 +13,11 @@ from exceptions.custom_exceptions import InvalidServingError, IncompatibleIngred
 from persistence.menu_semanal_pdf import export_menu_to_pdf
 
 
-def main():
-    ingredientes = []
-    platos = []
+def main() -> None:
+    ingredientes: list[Ingredient] = []
+    platos: list[Dish] = []
     recetario = RecipeBook("Mi recetario")
-    menu_semanal = None
+    menu_semanal: WeeklyMenu | None = None
 
     while True:
         print("\n--- MENÚ DE PRUEBA ---")

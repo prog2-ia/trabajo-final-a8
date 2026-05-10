@@ -11,22 +11,22 @@ class MixedDish(Dish):
     
     """
 
-    def __init__(self, name, ingredients, servings):
+    def __init__(self, name: str, ingredients: list[Ingredient], servings: int) -> None:
         super().__init__(name, ingredients, servings, "MIXTO")
 
-    def is_vegan(self):
+    def is_vegan(self) -> bool:
         for ingredient in self.ingredients:
             if ingredient.type in ("PLANTA", "MINERAL"):
                 return True
         return False
     
-    def is_meat(self):
+    def is_meat(self) -> bool:
         for ingredient in self.ingredients:
             if ingredient.type == "ANIMAL":
                 return True
         return False
     
-    def add_ingredient(self, ingredient: Ingredient):
+    def add_ingredient(self, ingredient: Ingredient) -> str | None:
         try:
             super().add_ingredient(ingredient)
         except ValueError as e:

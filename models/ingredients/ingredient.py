@@ -31,48 +31,48 @@ class Ingredient(ABC):
         self.allergens = allergens
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
-    
+
     @property
-    def quantity(self):
+    def quantity(self) -> float:
         return self.__quantity
-    
+
     @quantity.setter
-    def quantity(self, value):
+    def quantity(self, value: float) -> None:
         if value <= 0:
             raise InvalidUnitError("Cantidad ha de ser mayor a 1 gramo")
         else:
             self.__quantity = value
-        
+
     @property
-    def calories_per_100g(self):
+    def calories_per_100g(self) -> float:
         return self.__calories_per_100g
-    
+
     @calories_per_100g.setter
-    def calories_per_100g(self, value):
+    def calories_per_100g(self, value: float) -> None:
         if value < 0:
             raise ValueError("EL número de calorías ha de ser mayor que 0")
         else:
             self.__calories_per_100g = value
 
     @property
-    def type(self):
+    def type(self) -> str:
         return self.__type
-    
+
     @type.setter
-    def type(self, value):
+    def type(self, value: str) -> None:
         if value not in ("ANIMAL", "PLANTA", "MINERAL"):
             raise ValueError("Tipo de alimento no disponible")
         else:
             self.__type = value
 
     @property
-    def allergens(self):
+    def allergens(self) -> list[str]:
         return self.__allergens
-    
+
     @allergens.setter
-    def allergens(self, value):
+    def allergens(self, value: list[str]) -> None:
         if not isinstance(value, list):
             raise ValueError("Hay que pasar los alérgenos empleando una lista")
 
@@ -82,16 +82,16 @@ class Ingredient(ABC):
         else:
             self.__allergens = value
 
-    def total_calories(self):
+    def total_calories(self) -> float:
         return (self.calories_per_100g * self.quantity) /100
     
-    def is_allergen(self, allergen: str):
+    def is_allergen(self, allergen: str) -> bool:
         if not isinstance(allergen, str):
             raise ValueError("Introduzca el alérgeno con letras porfavor")
         else:
             return allergen in self.allergens
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
         if not isinstance(other, Ingredient):
             return False
 
@@ -100,10 +100,10 @@ class Ingredient(ABC):
                 self.type == other.type
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Información alimento: Ingredient[name='{self.name}',\
                 quantity={self.quantity}, calories_per_100g={self.calories_per_100g},\
                 allergens={self.allergens}]"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Ingredient(name={self.name}, type={self.type})"

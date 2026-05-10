@@ -14,16 +14,16 @@ class MineralIngredient(Ingredient):
         Tipo de mineral al que pertenece el ingrediente
         
     """
-    def __init__(self, name, quantity, calories_per_100g, allergens, mineral_type: str):
+    def __init__(self, name: str, quantity: float, calories_per_100g: float, allergens: list[str], mineral_type: str) -> None:
         super().__init__(name, quantity, calories_per_100g, "MINERAL", allergens)
         self.mineral_type = mineral_type
 
     @property
-    def mineral_type(self):
+    def mineral_type(self) -> str:
         return self.__mineral_type
     
     @mineral_type.setter
-    def mineral_type(self, value):
+    def mineral_type(self, value: str) -> None:
         if not isinstance(value, str):
             raise ValueError("Introduce el tipo de tipo usando letras")
         else:
