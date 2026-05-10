@@ -124,10 +124,18 @@ class Dish(ABC):
         Este método se implementa en subclases
         """
         pass
-    
+
+    def __eq__(self, other):
+        if not isinstance(other, Dish):
+            return False
+        return self.name == other.name
+
     def __str__(self):
         return (f"Información del plato: \n"
                 f"Nombre='{self.name}'\n"
                 f"Tipo='{self.dish_type}' \n"
                 f"Ingredientes: {self.list_ingredients()} \n"
                 f"Calorías totales={self.total_calories()}")
+
+    def __repr__(self):
+        return f"Dish({self.name}, {self.dish_type})"

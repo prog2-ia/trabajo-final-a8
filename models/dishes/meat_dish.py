@@ -27,8 +27,3 @@ class MeatDish(Dish):
         if ingredient.type != "ANIMAL":
             raise IncompatibleIngredientError("Solo se pueden añadir ingredientes de origen animal")
         super().add_ingredient(ingredient)
-
-
-        
-    
-

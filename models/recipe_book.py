@@ -17,5 +17,8 @@ class RecipeBook:
     def filter_by_allergen(self, allergen):
         return [d for d in self.dishes if not d.contains_allergen(allergen)]
 
+    def __len__(self):
+        return len(self.dishes)
+
     def __str__(self):
         return "\n".join([dish.name for dish in self.dishes])

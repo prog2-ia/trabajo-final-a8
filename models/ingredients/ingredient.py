@@ -90,8 +90,20 @@ class Ingredient(ABC):
             raise ValueError("Introduzca el alérgeno con letras porfavor")
         else:
             return allergen in self.allergens
-    
+
+    def __eq__(self, other):
+        if not isinstance(other, Ingredient):
+            return False
+
+        return (
+                self.name == other.name and
+                self.type == other.type
+        )
+
     def __str__(self):
         return f"Información alimento: Ingredient[name='{self.name}',\
                 quantity={self.quantity}, calories_per_100g={self.calories_per_100g},\
                 allergens={self.allergens}]"
+
+    def __repr__(self):
+        return f"Ingredient(name={self.name}, type={self.type})"
