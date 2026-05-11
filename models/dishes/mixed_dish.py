@@ -1,6 +1,7 @@
 from .dish import Dish
 from ..ingredients import Ingredient
 
+
 class MixedDish(Dish):
     """
     Clase que representa un plato mixto.

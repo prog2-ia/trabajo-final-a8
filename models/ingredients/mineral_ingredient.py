@@ -1,5 +1,6 @@
 from .ingredient import Ingredient
 
+
 class MineralIngredient(Ingredient):
     """
     Clase que representa un ingrediente de origen mineral.
