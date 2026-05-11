@@ -1,3 +1,8 @@
+"""
+Código de excepciones personalizadas.
+"""
+
+
 class InvalidUnitError(Exception):
     """
     Se lanza cuando una unidad numérica es inválida.
