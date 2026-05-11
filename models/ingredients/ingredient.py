@@ -52,7 +52,7 @@ class Ingredient(ABC):
     @calories_per_100g.setter
     def calories_per_100g(self, value: float) -> None:
         if value < 0:
-            raise ValueError("EL número de calorías ha de ser mayor que 0")
+            raise InvalidUnitError("EL número de calorías ha de ser mayor que 0")
         else:
             self.__calories_per_100g = value
 
