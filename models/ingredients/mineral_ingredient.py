@@ -1,3 +1,11 @@
+"""
+Código para ingredientes de origen mineral.
+
+Define la clase MineralIngredient que extiende Ingredient con
+información específica sobre el tipo de mineral del ingrediente.
+"""
+
+
 from .ingredient import Ingredient
 
 
@@ -21,10 +29,26 @@ class MineralIngredient(Ingredient):
 
     @property
     def mineral_type(self) -> str:
+        """
+        Obtiene el tipo de mineral del ingrediente.
+
+        Returns:
+            str: Tipo de mineral
+        """
         return self.__mineral_type
     
     @mineral_type.setter
     def mineral_type(self, value: str) -> None:
+        """
+        Asigna el tipo de mineral del ingrediente.
+
+        Args:
+            value (str): Tipo de mineral
+
+        Raises:
+            ValueError: Si el valor no es una cadena de texto
+        """
+        # validar que el valor sea de tipo string
         if not isinstance(value, str):
             raise ValueError("Introduce el tipo de tipo usando letras")
         else:

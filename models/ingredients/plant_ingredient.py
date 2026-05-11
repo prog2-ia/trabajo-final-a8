@@ -1,4 +1,13 @@
+"""
+Código para ingredientes de origen vegetal.
+
+Define la clase PlantIngredient que extiende Ingredient con
+información específica sobre si el producto es una fruta.
+"""
+
+
 from .ingredient import Ingredient
+
 
 class PlantIngredient(Ingredient):
     """
@@ -20,10 +29,26 @@ class PlantIngredient(Ingredient):
 
     @property
     def is_fruit(self) -> bool:
+        """
+        Obtiene si el ingrediente es una fruta.
+
+        Returns:
+            bool: True si es fruta, False si es verdura
+        """
         return self.__is_fruit
     
     @is_fruit.setter
     def is_fruit(self, value: bool) -> None:
+        """
+        Asigna si el ingrediente es una fruta.
+
+        Args:
+            value (bool): True para fruta, False para verdura
+
+        Raises:
+            ValueError: Si el valor no es booleano
+        """
+        # validar que el valor sea de tipo booleano
         if not isinstance(value, bool):
             raise ValueError("Indica si es fruta usando True o False")
         else:

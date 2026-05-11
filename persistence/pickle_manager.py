@@ -1,8 +1,16 @@
+"""
+Código para serializar y deserializar objetos usando pickle.
+
+Gestiona la persistencia de objetos en archivos, con soporte para
+crear automáticamente el directorio de almacenamiento.
+"""
+
+
 from pathlib import Path
 import pickle
 
 
-# carpeta donde se almacenan los pickle
+# directorio donde se almacenan los pickle
 PICKLE_DIR = Path("data/pickles")
 
 # si no existe la carpeta, crearla
@@ -11,7 +19,14 @@ PICKLE_DIR.mkdir(parents=True, exist_ok=True)
 
 def save_to_file(obj: object, filename: str) -> None:
     """
-    Guarda objetos usando pickle.
+    Serializa y guarda un objeto en un archivo pickle.
+
+    Args:
+        obj (object): Objeto a serializar
+        filename (str): Nombre del archivo donde guardar
+
+    Returns:
+        None
     """
 
     file_path = PICKLE_DIR / filename
@@ -21,7 +36,16 @@ def save_to_file(obj: object, filename: str) -> None:
 
 def load_from_file(filename: str) -> object:
     """
-    Carga objetos desde un archivo pickle.
+    Carga y deserializa un objeto desde un archivo pickle.
+
+    Args:
+        filename (str): Nombre del archivo a cargar
+
+    Returns:
+        object: Objeto deserializado desde el archivo
+
+    Raises:
+        FileNotFoundError: Si el archivo no existe en el directorio pickle
     """
 
     file_path = PICKLE_DIR / filename

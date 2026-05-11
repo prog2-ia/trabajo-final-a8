@@ -1,6 +1,6 @@
 """
-Código para comprobar el funcionamiento de las clases 
-sobre ingredientes y las de los platos
+Código principal e interactivo para comprobar el funcionamiento de las
+clases sobre ingredientes, platos y menús semanales.
 """
 
 from models.dishes import Dish, MeatDish, MixedDish, VeganDish
@@ -38,7 +38,16 @@ def initialize_sample_data() -> tuple[list[Ingredient], list[Dish]]:
 
 
 def main() -> None:
-    ingredientes, platos = initialize_sample_data()
+    """
+    Función principal que ejecuta el menú interactivo del sistema.
+
+    Flujo:
+    1. Inicializa datos predefinidos
+    2. Muestra menú de opciones en un bucle infinito
+    3. Procesa acciones según la opción seleccionada
+    4. Termina cuando el usuario selecciona "Salir"
+    """
+    ingredientes, platos = initialize_sample_data()  # cargar datos predefinidos
     recetario = RecipeBook("Mi recetario")
     menu_semanal: WeeklyMenu | None = None
 
@@ -59,7 +68,9 @@ def main() -> None:
         print("13. Exportar menú a PDF")
         opcion = input("Selecciona una opción: ")
 
+        # crear ingrediente personalizado
         if opcion == "1":
+            # solicitar tipo de ingrediente y validar
             tipo = input("Tipo de ingrediente (ANIMAL/PLANTA/MINERAL): ").upper()
             nombre = input("Nombre: ")
             cantidad = float(input("Cantidad en gramos: "))
@@ -69,6 +80,7 @@ def main() -> None:
             if tiene_alergenos:
                 alergenos = input("Lista de alérgenos separados por coma: ").split(",")
 
+            # crear instancia según el tipo de ingrediente seleccionado
             if tipo == "ANIMAL":
                 animal_source = input("Fuente animal (Cerdo, Vaca, Pollo...): ")
                 ing = AnimalIngredient(nombre, cantidad, calorias, alergenos, animal_source)
@@ -85,10 +97,12 @@ def main() -> None:
             ingredientes.append(ing)
             print(f"Ingrediente {nombre} creado correctamente.")
 
+        # crear plato personalizado
         elif opcion == "2":
             nombre_plato = input("Nombre del plato: ")
             print("Tipo de plato: 1=CARNE, 2=VEGANO, 3=MIXTO")
             tipo_plato = input("Selecciona tipo: ")
+            # crear instancia del plato según su tipo
             if tipo_plato == "1":
                 plato = MeatDish(nombre_plato, [], 1)
             elif tipo_plato == "2":
@@ -101,26 +115,31 @@ def main() -> None:
             platos.append(plato)
             print(f"Plato {nombre_plato} creado correctamente.")
 
+        # añadir ingrediente a un plato existente
         elif opcion == "3":
             if not ingredientes or not platos:
                 print("Primero crea ingredientes y platos")
                 continue
+            # mostrar lista de ingredientes disponibles y seleccionar uno
             print("Ingredientes disponibles:")
             for i, ing in enumerate(ingredientes):
                 print(f"{i+1}. {ing.name}")
             ing_sel = int(input("Selecciona ingrediente: ")) - 1
 
+            # mostrar lista de platos disponibles y seleccionar uno
             print("Platos disponibles:")
             for i, pl in enumerate(platos):
                 print(f"{i+1}. {pl.name}")
             pl_sel = int(input("Selecciona plato: ")) - 1
 
+            # intentar añadir el ingrediente (puede fallar por validaciones de tipo)
             try:
                 platos[pl_sel].add_ingredient(ingredientes[ing_sel])
                 print("Ingrediente añadido correctamente")
             except Exception as e:
                 print("Error:", e)
 
+        # quitar ingrediente de plato
         elif opcion == "4":
             if not platos:
                 print("No hay platos creados")
@@ -128,33 +147,37 @@ def main() -> None:
             print("Platos disponibles:")
             for i, pl in enumerate(platos):
                 print(f"{i+1}. {pl.name}")
-            pl_sel = int(input("Selecciona plato: ")) - 1
+            pl_sel = int(input("Selecciona plato: ")) - 1  # seleccionar plato
             plato = platos[pl_sel]
 
             print("Ingredientes en el plato:")
             for i, ing in enumerate(plato.ingredients):
                 print(f"{i+1}. {ing.name}")
-            ing_sel = int(input("Selecciona ingrediente a quitar: ")) - 1
+            ing_sel = int(input("Selecciona ingrediente a quitar: ")) - 1  # seleccionar ingrediente que quitar
 
             if plato.remove_ingredient(plato.ingredients[ing_sel]):
                 print("Ingrediente eliminado correctamente")
             else:
                 print("No se pudo eliminar el ingrediente")
 
+        # listar todos los ingredientes creados
         elif opcion == "5":
             print("Ingredientes creados:")
             for ing in ingredientes:
                 print(ing)
 
+        # listar todos los platos creados
         elif opcion == "6":
             print("Platos creados:")
             for pl in platos:
                 print(pl)
 
+        # salir del programa
         elif opcion == "7":
             print("Saliendo...")
             break
 
+        # añadir plato al recetario
         elif opcion == "8":
             if not platos:
                 print("No hay platos para añadir")
@@ -166,20 +189,24 @@ def main() -> None:
 
             idx = int(input("Selecciona plato: ")) - 1
 
+            # intentar añadir el plato al recetario
             try:
                 recetario.add_dish(platos[idx])
                 print("Plato añadido al recetario")
             except Exception as e:
                 print(e)
 
+        # generar menú semanal automático
         elif opcion == "9":
             if not platos:
                 print("No hay platos disponibles")
                 continue
 
+            # generar menú aleatorio a partir de los platos disponibles
             menu_semanal = generate_weekly_menu(platos)
             print("Menú semanal generado correctamente")
 
+        # mostrar menú semanal generado
         elif opcion == "10":
             if not menu_semanal:
                 print("No hay menú generado")
@@ -187,6 +214,7 @@ def main() -> None:
                 print("\nMENÚ SEMANAL:")
                 print(menu_semanal)
 
+        # guardar menú en archivo pickle
         elif opcion == "11":
             if not menu_semanal:
                 print("No hay menú para guardar")
@@ -195,6 +223,7 @@ def main() -> None:
             save_to_file(menu_semanal, "menu.pkl")
             print("Menú guardado correctamente")
 
+        # cargar menú desde archivo pickle
         elif opcion == "12":
             try:
                 menu_semanal = load_from_file("menu.pkl")
@@ -202,6 +231,7 @@ def main() -> None:
             except Exception as e:
                 print("Error al cargar:", e)
 
+        # exportar menú a PDF
         elif opcion == "13":
             if not menu_semanal:
                 print("No hay menú para exportar")
@@ -210,6 +240,7 @@ def main() -> None:
             export_menu_to_pdf(menu_semanal)
             print("PDF generado correctamente")
 
+        # opción no valida
         else:
             print("Opción no válida, inténtalo de nuevo.")
 
