@@ -82,9 +82,3 @@ El proyecto almacena los archivos generados en la carpeta `data/`, organizados e
 
 Se emplea persistencia mediante archivos PDF y Pickle.
 
-
-# Cosas que faltan
--> Comentar el resto del código
--> Sugerencia de tipos (def ...() -> None:)
--> Checkear aspecto 5 tema ficheros
--> Añadir ingredientes, platos predifidos
