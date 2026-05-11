@@ -73,7 +73,14 @@ La aplicación contará con un menú interactivo que permitirá:
 * Exportar menú a formato PDF
 
 
+## Persistencia de datos
 
+El proyecto almacena los archivos generados en la carpeta `data/`, organizados en:
+
+- `data/pdfs/`
+- `data/pickles/`
+
+Se emplea persistencia mediante archivos PDF y Pickle.
 
 
 # Cosas que faltan

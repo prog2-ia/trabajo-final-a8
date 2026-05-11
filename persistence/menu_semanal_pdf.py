@@ -1,12 +1,12 @@
+from pathlib import Path
 from fpdf import FPDF
+from models.weekly_menu import WeeklyMenu
 
 
 def export_menu_to_pdf(menu, filename="menu.pdf"):
     pdf = FPDF()
     pdf.add_page()
-
     pdf.set_font("Arial", size=12)
-
     pdf.cell(200, 10, txt="MENÚ SEMANAL", ln=True, align="C")
 
     for day, dish in menu.menu.items():
