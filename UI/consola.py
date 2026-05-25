@@ -12,7 +12,6 @@ from persistence.pickle_manager import save_to_file, load_from_file
 from persistence.menu_semanal_pdf import export_menu_to_pdf
 
 
-
 def exec(ingredientes, platos, recetario) -> None:
     """
     Función principal que ejecuta el menú interactivo del sistema.
@@ -48,8 +47,13 @@ def exec(ingredientes, platos, recetario) -> None:
             # solicitar tipo de ingrediente y validar
             tipo = input("Tipo de ingrediente (ANIMAL/PLANTA/MINERAL): ").upper()
             nombre = input("Nombre: ")
-            cantidad = float(input("Cantidad en gramos: "))
-            calorias = float(input("Calorías por 100g: "))
+            # para las cantidades y calorías, levantamos un ValueError si su input no es float
+            try:
+                cantidad = float(input("Cantidad en gramos: "))
+                calorias = float(input("Calorías por 100g: "))
+            except ValueError:
+                print("Error: introduce números válidos")
+                continue
             tiene_alergenos = input("¿Tiene alérgenos? (s/n): ").lower() == "s"
             alergenos = []
             if tiene_alergenos:
@@ -77,18 +81,26 @@ def exec(ingredientes, platos, recetario) -> None:
             nombre_plato = input("Nombre del plato: ")
             print("Tipo de plato: 1=CARNE, 2=VEGANO, 3=MIXTO")
             tipo_plato = input("Selecciona tipo: ")
-            # crear instancia del plato según su tipo
-            if tipo_plato == "1":
-                plato = MeatDish(nombre_plato, [], 1)
-            elif tipo_plato == "2":
-                plato = VeganDish(nombre_plato, [], 1)
-            elif tipo_plato == "3":
-                plato = MixedDish(nombre_plato, [], 1)
-            else:
-                print("Tipo no válido")
-                continue
-            platos.append(plato)
-            print(f"Plato {nombre_plato} creado correctamente.")
+            # intentar crear el plato y controlar posibles errores
+            try:
+                # crear instancia del plato según su tipo
+                if tipo_plato == "1":
+                    plato = MeatDish(nombre_plato, [], 1)
+                elif tipo_plato == "2":
+                    plato = VeganDish(nombre_plato, [], 1)
+                elif tipo_plato == "3":
+                    plato = MixedDish(nombre_plato, [], 1)
+                else:
+                    print("Tipo no válido")
+                    continue
+
+                # añadir plato a la lista si todo es correcto
+                platos.append(plato)
+                print(f"Plato {nombre_plato} creado correctamente.")
+
+            # capturar cualquier error de validación
+            except Exception as e:
+                print("Error:", e)
 
         # añadir ingrediente a un plato existente
         elif opcion == "3":
@@ -148,7 +160,6 @@ def exec(ingredientes, platos, recetario) -> None:
             for pl in platos:
                 print(pl)
                 print('------------------------------')
-
 
         # añadir plato al recetario
         elif opcion == "7":

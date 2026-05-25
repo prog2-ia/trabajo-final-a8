@@ -33,7 +33,7 @@ class Dish(ABC):
     """
 
     def __init__(self, name: str, ingredients: list[Ingredient], servings: int, dish_type: str) -> None:
-        self._name = name
+        self.name = name
         self.ingredients = ingredients
         self.servings = servings
         self.dish_type = dish_type
@@ -44,6 +44,27 @@ class Dish(ABC):
         Obtiene el nombre del plato.
         """
         return self._name
+
+    @name.setter
+    def name(self, value: str) -> None:
+        """
+        Asigna el nombre del plato.
+
+        Args:
+            value (str): Nombre del plato
+
+        Raises:
+            ValueError: Si el nombre no es un string o contiene solo números
+        """
+        # validar que el atributo value es string
+        if not isinstance(value, str):
+            raise ValueError("El nombre del plato debe ser un string")
+
+        # validar que, aunque value sea un string, no se componga solo por dígitos
+        if value.isdigit():
+            raise ValueError("El nombre del plato no puede solo contener números")
+
+        self._name = value
     
     @property
     def ingredients(self) -> list[Ingredient]:
