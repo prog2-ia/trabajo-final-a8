@@ -8,7 +8,6 @@ para garantizar que solo contiene ingredientes de origen animal.
 
 from .dish import Dish
 from ..ingredients import Ingredient
-import logging
 from exceptions.custom_exceptions import IncompatibleIngredientError
 
 

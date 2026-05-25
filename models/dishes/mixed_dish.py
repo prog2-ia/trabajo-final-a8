@@ -65,5 +65,5 @@ class MixedDish(Dish):
         try:
             super().add_ingredient(ingredient)
         except ValueError as e:
-            # capturar error y retornarlo como string en lugar de lanzar excepción
-            return f"No se ha podido añadir al ingrediente al plato mixto. Error: {e}"
+            # capturamos error
+            raise ValueError(e)

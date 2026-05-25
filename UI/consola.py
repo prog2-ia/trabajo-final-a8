@@ -13,7 +13,7 @@ from persistence.menu_semanal_pdf import export_menu_to_pdf
 
 
 
-def exec(ingredientes, platos, recetario, menu_semanal) -> None:
+def exec(ingredientes, platos, recetario) -> None:
     """
     Función principal que ejecuta el menú interactivo del sistema.
 
@@ -23,22 +23,24 @@ def exec(ingredientes, platos, recetario, menu_semanal) -> None:
     3. Procesa acciones según la opción seleccionada
     4. Termina cuando el usuario selecciona "Salir"
     """
+    menu_semanal = None
 
     while True:
-        print("\n--- MENÚ DE PRUEBA ---")
+        print("\n--- MENÚ ---")
         print("1. Crear ingrediente")
         print("2. Crear plato")
         print("3. Añadir ingrediente a plato")
         print("4. Quitar ingrediente de plato")
         print("5. Mostrar ingredientes")
         print("6. Mostrar platos")
-        print("7. Salir")
-        print("8. Añadir plato al recetario")
-        print("9. Generar menú semanal")
-        print("10. Mostrar menú semanal")
-        print("11. Guardar menú (pickle)")
-        print("12. Cargar menú (pickle)")
-        print("13. Exportar menú a PDF")
+        print("7. Añadir plato al recetario")
+        print("8. Generar menú semanal")
+        print("9. Mostrar menú semanal")
+        print("10. Guardar menú (pickle)")
+        print("11. Cargar menú (pickle)")
+        print("12. Exportar menú a PDF")
+        print("13. Salir")
+
         opcion = input("Selecciona una opción: ")
 
         # crear ingrediente personalizado
@@ -135,23 +137,21 @@ def exec(ingredientes, platos, recetario, menu_semanal) -> None:
 
         # listar todos los ingredientes creados
         elif opcion == "5":
-            print("Ingredientes creados:")
+            print("\nIngredientes creados:\n")
             for ing in ingredientes:
                 print(ing)
+                print('------------------------------')
 
         # listar todos los platos creados
         elif opcion == "6":
-            print("Platos creados:")
+            print("\nPlatos creados:\n")
             for pl in platos:
                 print(pl)
+                print('------------------------------')
 
-        # salir del programa
-        elif opcion == "7":
-            print("Saliendo...")
-            break
 
         # añadir plato al recetario
-        elif opcion == "8":
+        elif opcion == "7":
             if not platos:
                 print("No hay platos para añadir")
                 continue
@@ -170,7 +170,7 @@ def exec(ingredientes, platos, recetario, menu_semanal) -> None:
                 print(e)
 
         # generar menú semanal automático
-        elif opcion == "9":
+        elif opcion == "8":
             if not platos:
                 print("No hay platos disponibles")
                 continue
@@ -180,7 +180,7 @@ def exec(ingredientes, platos, recetario, menu_semanal) -> None:
             print("Menú semanal generado correctamente")
 
         # mostrar menú semanal generado
-        elif opcion == "10":
+        elif opcion == "9":
             if not menu_semanal:
                 print("No hay menú generado")
             else:
@@ -188,7 +188,7 @@ def exec(ingredientes, platos, recetario, menu_semanal) -> None:
                 print(menu_semanal)
 
         # guardar menú en archivo pickle
-        elif opcion == "11":
+        elif opcion == "10":
             if not menu_semanal:
                 print("No hay menú para guardar")
                 continue
@@ -197,7 +197,7 @@ def exec(ingredientes, platos, recetario, menu_semanal) -> None:
             print("Menú guardado correctamente")
 
         # cargar menú desde archivo pickle
-        elif opcion == "12":
+        elif opcion == "11":
             try:
                 menu_semanal = load_from_file("menu.pkl")
                 print("Menú cargado correctamente")
@@ -205,13 +205,18 @@ def exec(ingredientes, platos, recetario, menu_semanal) -> None:
                 print("Error al cargar:", e)
 
         # exportar menú a PDF
-        elif opcion == "13":
+        elif opcion == "12":
             if not menu_semanal:
                 print("No hay menú para exportar")
                 continue
 
             export_menu_to_pdf(menu_semanal)
             print("PDF generado correctamente")
+
+        # salir del programa
+        elif opcion == "13":
+            print("Saliendo...")
+            break
 
         # opción no valida
         else:

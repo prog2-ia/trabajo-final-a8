@@ -64,7 +64,7 @@ class Ingredient(ABC):
             InvalidUnitError: Si la cantidad es menor o igual a 0
         """
         if value <= 0:
-            raise InvalidUnitError("Cantidad ha de ser mayor a 1 gramo")
+            raise InvalidUnitError("Cantidad ha de ser mayor a 0 gramos")
         else:
             self.__quantity = value
 
@@ -185,9 +185,7 @@ class Ingredient(ABC):
         )
 
     def __str__(self) -> str:
-        return f"Información alimento: Ingredient[name='{self.name}',\
-                quantity={self.quantity}, calories_per_100g={self.calories_per_100g},\
-                allergens={self.allergens}]"
+        return f"Información alimento:\n -> Ingredient[name='{self.name}',\n-> quantity={self.quantity} \n-> calories_per_100g={self.calories_per_100g} \n-> allergens={self.allergens}]"
 
     def __repr__(self) -> str:
         return f"Ingredient(name={self.name}, type={self.type})"

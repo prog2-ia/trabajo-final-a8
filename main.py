@@ -25,12 +25,23 @@ def initialize_sample_data() -> tuple[list[Ingredient], list[Dish]]:
     pollo = AnimalIngredient("Pechuga de Pollo", 500.0, 165.0, [], "Pollo")
     tomate = PlantIngredient("Tomate", 300.0, 18.0, [], True)
     sal = MineralIngredient("Sal", 50.0, 0.0, [], "Cloruro de Sodio")
-    ingredientes = [pollo, tomate, sal]
+    arroz = PlantIngredient("Arroz", 200.02, 130.0, [], False)
+    huevo = AnimalIngredient("Huevo", 200.0, 130.0, [], False)
+    ingredientes = [pollo, tomate, sal, arroz, huevo]
 
     # platos predefinidos
     plato1 = MeatDish("Pollo a la Plancha", [], 1)
+    plato1.add_ingredient(pollo)
+
     plato2 = VeganDish("Ensalada", [], 1)
+    plato2.add_ingredient(tomate)
+    plato2.add_ingredient(sal)
+
     plato3 = MixedDish("Arroz con pollo", [], 1)
+    plato3.add_ingredient(arroz)
+    plato3.add_ingredient(pollo)
+    plato3.add_ingredient(sal)
+
     platos = [plato1, plato2, plato3]
 
     return ingredientes, platos
@@ -40,7 +51,7 @@ def main() -> None:
     ingredientes, platos = initialize_sample_data()  # cargar datos predefinidos
     recetario = RecipeBook("Mi recetario")
     menu_semanal: WeeklyMenu | None = None
-    exec(ingredientes, platos, recetario, menu_semanal)
+    exec(ingredientes, platos, recetario)
 
 if __name__ == "__main__":
     main()
