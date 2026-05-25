@@ -32,7 +32,7 @@ class Ingredient(ABC):
     """
 
     def __init__(self, name: str, quantity: float, calories_per_100g: float, type: str, allergens: list[str]):
-        self._name = name
+        self.name = name
         self.quantity = quantity
         self.calories_per_100g = calories_per_100g
         self.type = type
@@ -44,6 +44,27 @@ class Ingredient(ABC):
         Obtiene el nombre del ingrediente.
         """
         return self._name
+
+    @name.setter
+    def name(self, value: str) -> None:
+        """
+        Asigna el nombre del ingrediente.
+
+        Args:
+            value (str): Nombre del ingrediente
+
+        Raises:
+            ValueError: Si el nombre no es un string o contiene solo números
+        """
+        # validar que el atributo value es string
+        if not isinstance(value, str):
+            raise ValueError("El nombre debe ser un string")
+
+        # validar que, aunque value sea un string, no se componga solo por dígitos
+        if value.isdigit():
+            raise ValueError("El nombre del ingrediente no puede contener solo números")
+
+        self._name = value
 
     @property
     def quantity(self) -> float:
