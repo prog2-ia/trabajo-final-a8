@@ -222,6 +222,3 @@ def exec(ingredientes, platos, recetario) -> None:
         else:
             print("Opción no válida, inténtalo de nuevo.")
 
-
-if __name__ == "__main__":
-    main()
