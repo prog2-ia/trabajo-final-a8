@@ -31,11 +31,14 @@ cd trabajo-final-a8
 
 2. Crear un entorno virtual (opcional, pero recomendado):
 ```bash
+# Crear entorno
 python -m venv venv
+
 # Activar en Windows
 venv\Scripts\activate
+
 # Activar en Linux/macOS
-# source venv/bin/activate
+source venv/bin/activate
 ```
 
 3. Instalar dependencias:
@@ -47,16 +50,6 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
-
-## Resumen de la API
-[//]: # (documentación acerca de la API)
-La API REST estará disponible próximamente y permitirá:
-
-* Crear, listar, actualizar y eliminar ingredientes
-* Crear, listar y modificar platos
-* Asociar ingredientes a platos
-* Consultar recetas y detalles de los ingredientes
-
 ## Menú de aplicación
 
 [//]: # (para la evaluación por pares, indicaréis aquí las diferentes opciones de vuestro menú textual, especificando para qué sirve cada una de ellas)
@@ -73,12 +66,43 @@ La aplicación contará con un menú interactivo que permitirá:
 * Exportar menú a formato PDF
 
 
-## Persistencia de datos
+## Tipos de ingredientes
 
-El proyecto almacena los archivos generados en la carpeta `data/`, organizados en:
+| Tipo | Clase | Dato extra |
+|------|-------|------------|
+| Animal | `AnimalIngredient` | Fuente animal (Pollo, Vaca…) |
+| Vegetal | `PlantIngredient` | Si es fruta o verdura |
+| Mineral | `MineralIngredient` | Tipo de mineral |
 
-- `data/pdfs/`
-- `data/pickles/`
+## Tipos de platos
 
-Se emplea persistencia mediante archivos PDF y Pickle.
+| Tipo | Clase | Ingredientes permitidos |
+|------|-------|------------------------|
+| Carne | `MeatDish` | Solo ANIMAL |
+| Vegano | `VeganDish` | Solo PLANTA y MINERAL |
+| Mixto | `MixedDish` | Cualquier tipo |
+
+## Opciones del menú
+
+| Opción | Descripción |
+|--------|-------------|
+| 1 | Crear ingrediente (Animal / Vegetal / Mineral) |
+| 2 | Crear plato (Carne / Vegano / Mixto) |
+| 3 | Añadir ingrediente a un plato |
+| 4 | Quitar ingrediente de un plato |
+| 5 | Mostrar todos los ingredientes |
+| 6 | Mostrar todos los platos |
+| 7 | Añadir plato al recetario |
+| 8 | Generar menú semanal aleatorio |
+| 9 | Mostrar menú semanal |
+| 10 | Guardar menú (pickle) |
+| 11 | Cargar menú (pickle) |
+| 12 | Exportar menú a PDF |
+| 13 | Salir |
+
+## Persistencia
+
+Los datos generados se guardan en `data/`:
+- `data/pickles/` — menús serializados con pickle
+- `data/pdfs/` — menús exportados en PDF
 
