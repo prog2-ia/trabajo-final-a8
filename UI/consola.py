@@ -59,22 +59,29 @@ def exec(ingredientes, platos, recetario) -> None:
             if tiene_alergenos:
                 alergenos = input("Lista de alérgenos separados por coma: ").split(",")
 
-            # crear instancia según el tipo de ingrediente seleccionado
-            if tipo == "ANIMAL":
-                animal_source = input("Fuente animal (Cerdo, Vaca, Pollo...): ")
-                ing = AnimalIngredient(nombre, cantidad, calorias, alergenos, animal_source)
-            elif tipo == "PLANTA":
-                is_fruit = input("¿Es fruta? (s/n): ").lower() == "s"
-                ing = PlantIngredient(nombre, cantidad, calorias, alergenos, is_fruit)
-            elif tipo == "MINERAL":
-                mineral_type = input("Tipo de mineral: ")
-                ing = MineralIngredient(nombre, cantidad, calorias, alergenos, mineral_type)
-            else:
-                print("Tipo no válido")
-                continue
+                # intentar crear el ingrediente y controlar posibles errores
+                try:
+                    # crear instancia según el tipo de ingrediente seleccionado
+                    if tipo == "ANIMAL":
+                        animal_source = input("Fuente animal (Cerdo, Vaca, Pollo...): ")
+                        ing = AnimalIngredient(nombre, cantidad, calorias, alergenos, animal_source)
+                    elif tipo == "PLANTA":
+                        is_fruit = input("¿Es fruta? (s/n): ").lower() == "s"
+                        ing = PlantIngredient(nombre, cantidad, calorias, alergenos, is_fruit)
+                    elif tipo == "MINERAL":
+                        mineral_type = input("Tipo de mineral: ")
+                        ing = MineralIngredient(nombre, cantidad, calorias, alergenos, mineral_type)
+                    else:
+                        print("Tipo no válido")
+                        continue
 
-            ingredientes.append(ing)
-            print(f"Ingrediente {nombre} creado correctamente.")
+                    # añadir ingrediente a la lista si todo es correcto
+                    ingredientes.append(ing)
+                    print(f"Ingrediente {nombre} creado correctamente.")
+
+                # capturar cualquier error de validación
+                except Exception as e:
+                    print("Error:", e)
 
         # crear plato personalizado
         elif opcion == "2":
