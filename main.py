@@ -26,7 +26,7 @@ def initialize_sample_data() -> tuple[list[Ingredient], list[Dish]]:
     tomate = PlantIngredient("Tomate", 300.0, 18.0, [], True)
     sal = MineralIngredient("Sal", 50.0, 0.0, [], "Cloruro de Sodio")
     arroz = PlantIngredient("Arroz", 200.02, 130.0, [], False)
-    huevo = AnimalIngredient("Huevo", 200.0, 130.0, [], False)
+    huevo = AnimalIngredient("Huevo", 200.0, 130.0, [], "Gallina")
     ingredientes = [pollo, tomate, sal, arroz, huevo]
 
     # platos predefinidos
